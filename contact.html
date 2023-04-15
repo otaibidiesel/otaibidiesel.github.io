@@ -93,7 +93,8 @@
             <div class="col-lg-8">
               <h3 class="title-big">Contact us</h3>
               <p class="mb-4">Your email address will not be published. Required fields are marked *</p>
-              <form method="POST"  action="https://edufot.com/otaibi/form/index.php" class="text-right" name="form" enctype="multipart/form-data">
+              <form method="POST" action="https://edufot.com/otaibi/form/index.php" class="text-right" name="form"
+                enctype="multipart/form-data">
                 <div class="form-grid">
                   <input type="text" name="w3lName" id="w3lName" placeholder="Name*" required="">
                   <input type="email" name="w3lSender" id="w3lSender" placeholder="Email*" required="">
@@ -228,6 +229,20 @@
         });
 
       </script> -->
+      <script type="text/javascript">
+        var hash = "#search" || window.location.hash;
+        window.location.hash = hash;
+
+        switch (hash) {
+          case "#search":
+            alert("Thank you for using our service. We have successfully submitted your query to our database and we will notify you as soon as we have the results. Please check your email for a confirmation message and a reference number. We appreciate your patience and cooperation.");
+            break;
+          case "#advsearch":
+
+          case "#admin":
+
+        }
+      </script>
       <script>
         // When the user scrolls down 20px from the top of the document, show the button
         window.onscroll = function () {
