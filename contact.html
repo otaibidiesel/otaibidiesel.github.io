@@ -101,7 +101,7 @@
                   <input type="text" name="w3lSubject" id="w3lSubject" placeholder="Subject">
                 </div>
                 <textarea name="w3lMessage" id="w3lMessage" placeholder="Message"></textarea>
-                <button type="submit" class="btn btn-primary btn-style mt-3">Submit</button>
+                <button type="submit" name="submit" class="btn btn-primary btn-style mt-3">Submit</button>
               </form>
             </div>
             <div class="col-lg-4 cont-details">
@@ -214,28 +214,19 @@
         <span class="fa fa-level-up"></span>
       </button>
       <script>
-        //         $w3lName = input($_POST["w3lName"]);
-        // $w3lSender = input($_POST["w3lSender"]);
-        // $w3lPhone = input($_POST["w3lPhone"]);
-        // $w3lSubject = input($_POST["w3lSubject"]);
-        // $w3lMessage = input($_POST["w3lMessage"]);
-        // $date_time = date('m/d/Y h:i:s a', time());
-        function myFunction() {
-          var w3lName = document.getElementById("w3lName").value;
-          var w3lSender = document.getElementById("w3lSender").value;
-          var w3lPhone = document.getElementById("w3lPhone").value;
-          var w3lSubject = document.getElementById("w3lSubject").value;
-          var w3lMessage = document.getElementById("w3lMessage").value;
-          $.ajax({
-            type: "POST",  //type of method
-            url: "https://edufot.com/otaibi/form/index.php",  //your page
-            data: { w3lName: w3lName, w3lSender: w3lSender, w3lPhone: w3lPhone, w3lSubject: w3lSubject, w3lMessage: w3lMessage },// passing the values
-            success: function (res) {
-              //do what you want here...
-              alert("Thank you for using our service. We have successfully submitted your query to our database and we will notify you as soon as we have the results. Please check your email for a confirmation message and a reference number. We appreciate your patience and cooperation.");
-            }
+        $(document).ready(function () {
+          $("form").on("submit", function (event) {
+            $.ajax({
+              type: 'POST',
+              url: 'https://edufot.com/otaibi/form/index.php',
+              data: $(this).serialize(),
+              success: function (data) {
+                alert("Thank you for using our service. We have successfully submitted your query to our database and we will notify you as soon as we have the results. Please check your email for a confirmation message and a reference number. We appreciate your patience and cooperation.");
+              }
+            });
           });
-        }
+        });
+
       </script>
       <script>
         // When the user scrolls down 20px from the top of the document, show the button
