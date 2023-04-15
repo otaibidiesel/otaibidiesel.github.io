@@ -93,7 +93,7 @@
             <div class="col-lg-8">
               <h3 class="title-big">Contact us</h3>
               <p class="mb-4">Your email address will not be published. Required fields are marked *</p>
-              <form action="https://edufot.com/otaibi/form/index.php" method="post" class="text-right">
+              <form method="POST" class="text-right" name="form" enctype="multipart/form-data">
                 <div class="form-grid">
                   <input type="text" name="w3lName" id="w3lName" placeholder="Name*" required="">
                   <input type="email" name="w3lSender" id="w3lSender" placeholder="Email*" required="">
@@ -128,8 +128,7 @@
           <div class="map mt-lg-5 mt-md-3">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3713.5949207238414!2d39.25387381069679!3d21.445161380228292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15c3cdd6da9b62df%3A0x56f654cc49947a39!2sAL%20OTAIBI%20DIESEL%20-%20Pump%20and%20Injector%20(Nozzle)%20Service!5e0!3m2!1sen!2ssa!4v1681562582120!5m2!1sen!2ssa"
-              style="border:0;" allowfullscreen="" loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"></iframe>
+              style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             <!-- <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387190.2895687731!2d-74.26055986835598!3d40.697668402590374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY%2C+USA!5e0!3m2!1sen!2sin!4v1562582305883!5m2!1sen!2sin"
               frameborder="0" style="border:0" allowfullscreen=""></iframe> -->
@@ -214,6 +213,30 @@
       <button onclick="topFunction()" id="movetop" class="bg-primary" title="Go to top">
         <span class="fa fa-level-up"></span>
       </button>
+      <script>
+        //         $w3lName = input($_POST["w3lName"]);
+        // $w3lSender = input($_POST["w3lSender"]);
+        // $w3lPhone = input($_POST["w3lPhone"]);
+        // $w3lSubject = input($_POST["w3lSubject"]);
+        // $w3lMessage = input($_POST["w3lMessage"]);
+        // $date_time = date('m/d/Y h:i:s a', time());
+        function myFunction() {
+          var w3lName = document.getElementById("w3lName").value;
+          var w3lSender = document.getElementById("w3lSender").value;
+          var w3lPhone = document.getElementById("w3lPhone").value;
+          var w3lSubject = document.getElementById("w3lSubject").value;
+          var w3lMessage = document.getElementById("w3lMessage").value;
+          $.ajax({
+            type: "POST",  //type of method
+            url: "https://edufot.com/otaibi/form/index.php",  //your page
+            data: { w3lName: w3lName, w3lSender: w3lSender, w3lPhone: w3lPhone, w3lSubject: w3lSubject, w3lMessage: w3lMessage },// passing the values
+            success: function (res) {
+              //do what you want here...
+              alert("Thank you for using our service. We have successfully submitted your query to our database and we will notify you as soon as we have the results. Please check your email for a confirmation message and a reference number. We appreciate your patience and cooperation.");
+            }
+          });
+        }
+      </script>
       <script>
         // When the user scrolls down 20px from the top of the document, show the button
         window.onscroll = function () {
