@@ -230,7 +230,9 @@
 
       </script> -->
       <script type="text/javascript">
-        var hash = "#contact" || window.location.hash;
+
+if(window.location.hash) {
+  var hash = "#contact" || window.location.hash;
        // window.location.hash = hash;
 
         switch (hash) {
@@ -242,6 +244,10 @@
           case "#admin":
 
         }
+} else {
+  // Fragment doesn't exist
+}
+        
       </script>
       <script>
         // When the user scrolls down 20px from the top of the document, show the button
